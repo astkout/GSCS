@@ -91,6 +91,77 @@ const OurWork = () => {
         </p>
       </div>
 
+      <div className="py-16 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+            {/* Residential Cleaning */}
+            <div className="relative bg-white p-8 rounded-lg shadow-xl text-center overflow-hidden transform transition-transform duration-300 hover:scale-105">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                Residential Cleaning
+              </h3>
+              <ul className="text-gray-600 space-y-3 text-lg font-semibold">
+                <li>Regular house cleaning</li>
+                <li>Deep cleaning</li>
+                <li>Move-in/move-out cleaning</li>
+              </ul>
+              <div
+                className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-300 hover:opacity-100"
+                style={{ backgroundImage: "url(./assets/residential.jpg)" }}
+              ></div>
+            </div>
+
+            {/* Commercial Cleaning */}
+            <div className="relative bg-white p-8 rounded-lg shadow-xl text-center overflow-hidden transform transition-transform duration-300 hover:scale-105">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                Commercial Cleaning
+              </h3>
+              <ul className="text-gray-600 space-y-3 text-lg font-semibold">
+                <li>Office spaces</li>
+                <li>Retail stores</li>
+                <li>Warehouses</li>
+                <li>Educational facilities</li>
+              </ul>
+              <div
+                className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-300 hover:opacity-100"
+                style={{ backgroundImage: "url(./assets/commercial.jpg)" }}
+              ></div>
+            </div>
+
+            {/* Airbnb & Short-Term Rentals */}
+            <div className="relative bg-white p-8 rounded-lg shadow-xl text-center overflow-hidden transform transition-transform duration-300 hover:scale-105">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                Airbnb & Short-Term Rentals
+              </h3>
+              <ul className="text-gray-600 space-y-3 text-lg font-semibold">
+                <li>Turnover cleaning</li>
+                <li>Guest-ready deep cleaning</li>
+                <li>Laundry and restocking services</li>
+              </ul>
+              <div
+                className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-300 hover:opacity-100"
+                style={{ backgroundImage: "url(./assets/airbnb.jpg)" }}
+              ></div>
+            </div>
+
+            {/* Specialized Cleaning */}
+            <div className="relative bg-white p-8 rounded-lg shadow-xl text-center overflow-hidden transform transition-transform duration-300 hover:scale-105">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                Specialized Cleaning
+              </h3>
+              <ul className="text-gray-600 space-y-3 text-lg font-semibold">
+                <li>Post-construction cleaning</li>
+                <li>Event clean-up (before/after parties, conferences)</li>
+                <li>Carpet and upholstery cleaning</li>
+              </ul>
+              <div
+                className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-300 hover:opacity-100"
+                style={{ backgroundImage: "url(./assets/carpet.jpg)" }}
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Slider */}
       <div
         className="relative py-10 md:py-20 mx-auto max-w-4xl"
@@ -109,7 +180,7 @@ const OurWork = () => {
                 <img
                   src={image}
                   alt={`Slide ${index}`}
-                  className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover"
+                  className="w-full h-[400px] sm:h-[400px] md:h-[500px] object-cover"
                 />
               </div>
             ))}
@@ -149,51 +220,48 @@ const OurWork = () => {
         )}
       </div>
 
-     {/* Info Cards */}
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12">
-  <div className="bg-white p-6 rounded-lg shadow-md text-center transform transition-transform duration-300 hover:scale-105">
-    <img
-      src="assets/fast.png"
-      alt="Fast"
-      className="w-16 h-16 mx-auto mb-4"
-    />
-    <h3 className="text-lg sm:text-xl font-bold">Fast</h3>
-    <p className="mt-2 text-sm sm:text-base">
-      We deliver prompt, efficient cleaning services, ensuring your space
-      is spotless in no time.
-    </p>
-  </div>
-  <div className="bg-white p-6 rounded-lg shadow-md text-center transform transition-transform duration-300 hover:scale-105">
-    <img
-      src="assets/reliable.png"
-      alt="Reliable"
-      className="w-16 h-16 mx-auto mb-4"
-    />
-    <h3 className="text-lg sm:text-xl font-bold">Reliable</h3>
-    <p className="mt-2 text-sm sm:text-base">
-      We provide reliable and consistent services, ensuring your needs are
-      met with the highest level of professionalism and dependability.
-    </p>
-  </div>
-  <div className="bg-white p-6 rounded-lg shadow-md text-center transform transition-transform duration-300 hover:scale-105">
-    <img
-      src="assets/affordable.png"
-      alt="Affordable"
-      className="w-16 h-16 mx-auto mb-4"
-    />
-    <h3 className="text-lg sm:text-xl font-bold">Affordable</h3>
-    <p className="mt-2 text-sm sm:text-base">
-      We deliver cost-effective solutions, offering exceptional value
-      through highly competitive pricing designed to meet your needs
-      without compromising on quality.
-    </p>
-  </div>
-</div>
-
+      {/* Info Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12">
+        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+          <img
+            src="assets/fast.png"
+            alt="Fast"
+            className="w-16 h-16 mx-auto mb-4"
+          />
+          <h3 className="text-lg sm:text-xl font-bold">Fast</h3>
+          <p className="mt-2 text-sm sm:text-base">
+            We deliver prompt, efficient cleaning services, ensuring your space
+            is spotless in no time.
+          </p>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+          <img
+            src="assets/reliable.png"
+            alt="Reliable"
+            className="w-16 h-16 mx-auto mb-4"
+          />
+          <h3 className="text-lg sm:text-xl font-bold">Reliable</h3>
+          <p className="mt-2 text-sm sm:text-base">
+            We provide reliable and consistent services, ensuring your needs are
+            met with the highest level of professionalism and dependability.
+          </p>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+          <img
+            src="assets/affordable.png"
+            alt="Affordable"
+            className="w-16 h-16 mx-auto mb-4"
+          />
+          <h3 className="text-lg sm:text-xl font-bold">Affordable</h3>
+          <p className="mt-2 text-sm sm:text-base">
+            We deliver cost-effective solutions, offering exceptional value
+            through highly competitive pricing designed to meet your needs
+            without compromising on quality.
+          </p>
+        </div>
+      </div>
     </section>
   );
 };
 
 export default OurWork;
-
-
