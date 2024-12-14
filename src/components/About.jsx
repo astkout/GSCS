@@ -31,12 +31,13 @@ const About = () => {
 
         {/* Image Section */}
         <div className="md:w-1/2 p-5 mt-8 md:mt-0">
-          <img
-            src="/assets/about2.png"
-            alt="About Us"
-            className="w-full max-w-sm md:max-w-full h-auto rounded-full mx-auto"
-          />
-        </div>
+  <img
+    src="/assets/about2.png"
+    alt="About Us"
+    className="w-full max-w-sm md:max-w-full h-auto rounded-full mx-auto transform transition-transform duration-300 ease-in-out md:hover:scale-110"
+  />
+</div>
+
       </div>
     </section>
   );
