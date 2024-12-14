@@ -1,5 +1,3 @@
-// src/components/Testimonial.js
-
 import React, { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable'; // Import the react-swipeable package
 
@@ -20,7 +18,6 @@ const testimonials = [
     message: 'I’ve been using their cleaning service for months, and it has significantly improved the cleanliness and organization of our campus.',
   },
 ];
-
 
 const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -53,12 +50,51 @@ const Testimonial = () => {
     preventDefaultTouchmoveEvent: true,  // Prevent default scroll behavior when swiping
   });
 
+  // Custom SVG arrow icons
+  const LeftArrow = () => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      className="text-gray-800"
+    >
+      <path
+        fill="none"
+        d="M0 0h24v24H0z"
+      />
+      <path
+        d="M14 7l-5 5 5 5V7z"
+      />
+    </svg>
+  );
+
+  const RightArrow = () => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      className="text-gray-800"
+    >
+      <path
+        fill="none"
+        d="M0 0h24v24H0z"
+      />
+      <path
+        d="M10 7l5 5-5 5V7z"
+      />
+    </svg>
+  );
+
   return (
     <section className="bg-blue-200 py-16">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">What Our Clients Say</h2>
+        <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
+          What Our Clients Say
+        </h2>
         <div className="relative" {...handlers}>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className="bg-white p-6 rounded-lg shadow-lg mb-8"> {/* Add margin-bottom here */}
             <h3 className="text-xl font-semibold text-gray-800 text-center">
               {testimonials[currentIndex].name}
             </h3>
@@ -70,17 +106,19 @@ const Testimonial = () => {
             </p>
           </div>
           <div className="absolute inset-0 flex justify-between items-center px-4">
+            {/* Previous button with custom SVG icon */}
             <button
               onClick={prevTestimonial}
-              className="bg-gray-800 text-white p-2 rounded-full hidden md:block"
+              className="bg-white text-gray-800 p-4 rounded-full hover:bg-gray-200 transition duration-300"
             >
-              &lt;
+              <LeftArrow /> {/* Custom Left Arrow */}
             </button>
+            {/* Next button with custom SVG icon */}
             <button
               onClick={nextTestimonial}
-              className="bg-gray-800 text-white p-2 rounded-full hidden md:block"
+              className="bg-white text-gray-800 p-4 rounded-full hover:bg-gray-200 transition duration-300"
             >
-              &gt;
+              <RightArrow /> {/* Custom Right Arrow */}
             </button>
           </div>
         </div>
@@ -90,3 +128,4 @@ const Testimonial = () => {
 };
 
 export default Testimonial;
+

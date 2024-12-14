@@ -42,7 +42,7 @@ const ContactUs = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-gray-100">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row justify-between space-y-8 lg:space-y-0">
           {/* Left side: Contact details */}

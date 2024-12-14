@@ -57,17 +57,31 @@ const OurWork = () => {
     return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
-  // Auto slideshow every 3 seconds on desktop
+  // Auto slideshow every 3 seconds on mobile
   useEffect(() => {
-    if (!isMobile) {
-      const intervalId = setInterval(nextImage, 4000); // Change every 4 seconds
-      return () => clearInterval(intervalId); // Cleanup interval on unmount or when isMobile changes
+    let intervalId;
+    if (isMobile) {
+      intervalId = setInterval(nextImage, 3000); // Change every 3 seconds on mobile
     }
+    return () => {
+      if (intervalId) clearInterval(intervalId); // Cleanup interval on unmount or when isMobile changes
+    };
+  }, [isMobile, nextImage]);
+
+  // Auto slideshow every 4 seconds on desktop
+  useEffect(() => {
+    let intervalId;
+    if (!isMobile) {
+      intervalId = setInterval(nextImage, 4000); // Change every 4 seconds on desktop
+    }
+    return () => {
+      if (intervalId) clearInterval(intervalId); // Cleanup interval on unmount or when isMobile changes
+    };
   }, [isMobile, nextImage]);
 
   return (
-    <section id="ourwork" className="py-20 sm:py-40 px-10 md:px-20 bg-blue-200">
-      <div className="text-center mb-12">
+    <section id="ourwork" className="py-20 sm:py-40 px-10 md:px-20 bg-gray-100">
+      <div className="text-center mb-12 flex flex-col items-center justify-center">
         <h2 className="text-3xl md:text-5xl font-bold">Our Work</h2>
         <p className="mt-7 px-10 text-xl md:text-2xl font-semibold">
           With over 20 years of expertise in the cleaning industry, we deliver
@@ -83,6 +97,7 @@ const OurWork = () => {
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
+        {/* Carousel Wrapper */}
         <div className="overflow-hidden rounded-lg">
           <div
             className="flex transition-transform duration-500 ease-in-out"
@@ -103,19 +118,30 @@ const OurWork = () => {
 
         {/* Controls */}
         {!isMobile && (
-          <div className="absolute top-1/2 left-0 right-0 flex justify-between px-4 transform -translate-y-1/2">
-            {/* Left Arrow */}
+          <div className="absolute inset-y-0 left-0 flex items-center justify-center px-4">
+            {/* Previous button */}
             <button
               onClick={prevImage}
-              className="text-white bg-black p-2 rounded-full hover:bg-gray-700 focus:outline-none transition duration-300 sm:p-4"
+              className="bg-transparent text-blue-500 p-4 rounded-full hover:bg-blue-500 hover:text-white transition duration-300"
+              style={{
+                position: "absolute",
+                left: "-70px", // Position outside to the left of the carousel
+              }}
             >
               <FaChevronLeft size={30} />
             </button>
-
-            {/* Right Arrow */}
+          </div>
+        )}
+        {!isMobile && (
+          <div className="absolute inset-y-0 right-0 flex items-center justify-center px-4">
+            {/* Next button */}
             <button
               onClick={nextImage}
-              className="text-white bg-black p-2 rounded-full hover:bg-gray-700 focus:outline-none transition duration-300 sm:p-4"
+              className="bg-transparent text-blue-500 p-4 rounded-full hover:bg-blue-400 hover:text-white transition duration-300"
+              style={{
+                position: "absolute",
+                right: "-70px", // Position outside to the right of the carousel
+              }}
             >
               <FaChevronRight size={30} />
             </button>
@@ -168,3 +194,5 @@ const OurWork = () => {
 };
 
 export default OurWork;
+
+
