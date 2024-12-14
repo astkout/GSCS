@@ -149,46 +149,47 @@ const OurWork = () => {
         )}
       </div>
 
-      {/* Info Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12">
-        <div className="bg-white p-6 rounded-lg shadow-md text-center">
-          <img
-            src="assets/fast.png"
-            alt="Fast"
-            className="w-16 h-16 mx-auto mb-4"
-          />
-          <h3 className="text-lg sm:text-xl font-bold">Fast</h3>
-          <p className="mt-2 text-sm sm:text-base">
-            We deliver prompt, efficient cleaning services, ensuring your space
-            is spotless in no time.
-          </p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md text-center">
-          <img
-            src="assets/reliable.png"
-            alt="Reliable"
-            className="w-16 h-16 mx-auto mb-4"
-          />
-          <h3 className="text-lg sm:text-xl font-bold">Reliable</h3>
-          <p className="mt-2 text-sm sm:text-base">
-            We provide reliable and consistent services, ensuring your needs are
-            met with the highest level of professionalism and dependability.
-          </p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md text-center">
-          <img
-            src="assets/affordable.png"
-            alt="Affordable"
-            className="w-16 h-16 mx-auto mb-4"
-          />
-          <h3 className="text-lg sm:text-xl font-bold">Affordable</h3>
-          <p className="mt-2 text-sm sm:text-base">
-            We deliver cost-effective solutions, offering exceptional value
-            through highly competitive pricing designed to meet your needs
-            without compromising on quality.
-          </p>
-        </div>
-      </div>
+     {/* Info Cards */}
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12">
+  <div className="bg-white p-6 rounded-lg shadow-md text-center transform transition-transform duration-300 hover:scale-105">
+    <img
+      src="assets/fast.png"
+      alt="Fast"
+      className="w-16 h-16 mx-auto mb-4"
+    />
+    <h3 className="text-lg sm:text-xl font-bold">Fast</h3>
+    <p className="mt-2 text-sm sm:text-base">
+      We deliver prompt, efficient cleaning services, ensuring your space
+      is spotless in no time.
+    </p>
+  </div>
+  <div className="bg-white p-6 rounded-lg shadow-md text-center transform transition-transform duration-300 hover:scale-105">
+    <img
+      src="assets/reliable.png"
+      alt="Reliable"
+      className="w-16 h-16 mx-auto mb-4"
+    />
+    <h3 className="text-lg sm:text-xl font-bold">Reliable</h3>
+    <p className="mt-2 text-sm sm:text-base">
+      We provide reliable and consistent services, ensuring your needs are
+      met with the highest level of professionalism and dependability.
+    </p>
+  </div>
+  <div className="bg-white p-6 rounded-lg shadow-md text-center transform transition-transform duration-300 hover:scale-105">
+    <img
+      src="assets/affordable.png"
+      alt="Affordable"
+      className="w-16 h-16 mx-auto mb-4"
+    />
+    <h3 className="text-lg sm:text-xl font-bold">Affordable</h3>
+    <p className="mt-2 text-sm sm:text-base">
+      We deliver cost-effective solutions, offering exceptional value
+      through highly competitive pricing designed to meet your needs
+      without compromising on quality.
+    </p>
+  </div>
+</div>
+
     </section>
   );
 };
