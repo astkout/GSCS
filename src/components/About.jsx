@@ -34,7 +34,7 @@ const About = () => {
           <img
             src="/assets/about2.png"
             alt="About Us"
-            className="w-full max-w-sm md:max-w-full h-auto rounded-lg mx-auto"
+            className="w-full max-w-sm md:max-w-full h-auto rounded-full mx-auto"
           />
         </div>
       </div>

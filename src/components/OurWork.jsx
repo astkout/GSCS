@@ -60,16 +60,16 @@ const OurWork = () => {
   // Auto slideshow every 3 seconds on desktop
   useEffect(() => {
     if (!isMobile) {
-      const intervalId = setInterval(nextImage, 4000); // Change every 3 seconds
+      const intervalId = setInterval(nextImage, 4000); // Change every 4 seconds
       return () => clearInterval(intervalId); // Cleanup interval on unmount or when isMobile changes
     }
   }, [isMobile, nextImage]);
 
   return (
-    <section id="ourwork" className="py-20 sm:py-40 px-10 md:px-20 bg-gray-100">
+    <section id="ourwork" className="py-20 sm:py-40 px-10 md:px-20 bg-blue-200">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-5xl font-bold underline">Our Work</h2>
-        <p className="mt-7 text-xl md:text-2xl font-semibold">
+        <h2 className="text-3xl md:text-5xl font-bold">Our Work</h2>
+        <p className="mt-7 px-10 text-xl md:text-2xl font-semibold">
           With over 20 years of expertise in the cleaning industry, we deliver
           unparalleled service and immaculate results. Our commitment to
           excellence ensures your space is meticulously cleaned, creating an
@@ -79,7 +79,7 @@ const OurWork = () => {
 
       {/* Slider */}
       <div
-        className="relative py-10 md:py-20"
+        className="relative py-10 md:py-20 mx-auto max-w-4xl"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
