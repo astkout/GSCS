@@ -21,6 +21,7 @@ const testimonials = [
 
 const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const testimonialCount = testimonials.length;
 
   // Move to the next testimonial
@@ -39,8 +40,24 @@ const Testimonial = () => {
   useEffect(() => {
     const timer = setInterval(nextTestimonial, 5000); // Change every 5 seconds
 
-    // Clean up the timer when the component is unmounted
-    return () => clearInterval(timer);
+    // Check if the window width is below 768px to set the isMobile state
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    };
+
+    // Add resize event listener
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Set initial state based on the current window width
+
+    // Clean up the timer and event listener when the component is unmounted
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   // Set up swipe functionality using react-swipeable
@@ -94,7 +111,7 @@ const Testimonial = () => {
           What Our Clients Say
         </h2>
         <div className="relative" {...handlers}>
-          <div className="bg-white p-6 rounded-lg shadow-lg mb-8"> {/* Add margin-bottom here */}
+          <div className="bg-white p-6 rounded-lg shadow-lg mb-8">
             <h3 className="text-xl font-semibold text-gray-800 text-center">
               {testimonials[currentIndex].name}
             </h3>
@@ -106,20 +123,25 @@ const Testimonial = () => {
             </p>
           </div>
           <div className="absolute inset-0 flex justify-between items-center px-4">
-            {/* Previous button with custom SVG icon */}
-            <button
-              onClick={prevTestimonial}
-              className="bg-white text-gray-800 p-4 rounded-full hover:bg-gray-200 transition duration-300"
-            >
-              <LeftArrow /> {/* Custom Left Arrow */}
-            </button>
-            {/* Next button with custom SVG icon */}
-            <button
-              onClick={nextTestimonial}
-              className="bg-white text-gray-800 p-4 rounded-full hover:bg-gray-200 transition duration-300"
-            >
-              <RightArrow /> {/* Custom Right Arrow */}
-            </button>
+            {/* Only render arrows if not mobile */}
+            {!isMobile && (
+              <>
+                {/* Previous button with custom SVG icon */}
+                <button
+                  onClick={prevTestimonial}
+                  className="bg-white text-gray-800 p-4 rounded-full hover:bg-gray-200 transition duration-300"
+                >
+                  <LeftArrow /> {/* Custom Left Arrow */}
+                </button>
+                {/* Next button with custom SVG icon */}
+                <button
+                  onClick={nextTestimonial}
+                  className="bg-white text-gray-800 p-4 rounded-full hover:bg-gray-200 transition duration-300"
+                >
+                  <RightArrow /> {/* Custom Right Arrow */}
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -128,4 +150,3 @@ const Testimonial = () => {
 };
 
 export default Testimonial;
-
