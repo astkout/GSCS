@@ -19,7 +19,7 @@ const Navbar = () => {
           <div className="flex items-center p-2">
             <a href="#home" className="flex items-center">
               <img
-                src="assets/logo.png"
+                src="../assets/logo.png"
                 alt="Cleaning Services Logo"
                 className="h-12 w-auto"
               />
