@@ -1,10 +1,10 @@
-// src/components/About.js
 import React from "react";
 
 const About = () => {
   return (
     <section className="bg-gray-100 py-16" id="about">
       <div className="max-w-7xl mx-auto my-20 px-6 flex flex-col md:flex-row items-center">
+        {/* Text Section */}
         <div className="md:w-1/2">
           <h2 className="text-4xl font-bold text-gray-800 mb-6">About Us</h2>
           <p className="text-lg font-semibold text-gray-700 mb-4">
@@ -17,8 +17,7 @@ const About = () => {
           <p className="text-lg font-semibold text-gray-700 mb-6">
             We combine expertise, efficiency, and attention to detail to ensure
             every space is spotless and refreshed, making us a trusted choice
-            for cleaning services that exceed expectations." Let me know if
-            you'd like to modify or add anything!
+            for cleaning services that exceed expectations.
           </p>
           <div className="mt-12">
             <a
@@ -29,11 +28,13 @@ const About = () => {
             </a>
           </div>
         </div>
+
+        {/* Image Section */}
         <div className="md:w-1/2 p-5 mt-8 md:mt-0">
           <img
             src="/assets/about2.png"
             alt="About Us"
-            className="w-full h-auto rounded-lg mx-4 md:mx-0"
+            className="w-full max-w-sm md:max-w-full h-auto rounded-lg mx-auto"
           />
         </div>
       </div>
@@ -42,4 +43,3 @@ const About = () => {
 };
 
 export default About;
-
