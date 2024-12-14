@@ -103,7 +103,6 @@ const OurWork = () => {
               <ul className="text-gray-600 space-y-3 text-lg font-semibold">
                 <li>Regular house cleaning</li>
                 <li>Deep cleaning</li>
-                <li>Move-in/move-out cleaning</li>
               </ul>
               <div
                 className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-300 hover:opacity-100"
@@ -119,8 +118,6 @@ const OurWork = () => {
               <ul className="text-gray-600 space-y-3 text-lg font-semibold">
                 <li>Office spaces</li>
                 <li>Retail stores</li>
-                <li>Warehouses</li>
-                <li>Educational facilities</li>
               </ul>
               <div
                 className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-300 hover:opacity-100"
@@ -135,7 +132,6 @@ const OurWork = () => {
               </h3>
               <ul className="text-gray-600 space-y-3 text-lg font-semibold">
                 <li>Turnover cleaning</li>
-                <li>Guest-ready deep cleaning</li>
                 <li>Laundry and restocking services</li>
               </ul>
               <div
@@ -150,9 +146,9 @@ const OurWork = () => {
                 Specialized Cleaning
               </h3>
               <ul className="text-gray-600 space-y-3 text-lg font-semibold">
-                <li>Post-construction cleaning</li>
-                <li>Event clean-up (before/after parties, conferences)</li>
-                <li>Carpet and upholstery cleaning</li>
+                <li>Fridges</li>
+                <li>Ovens</li>
+
               </ul>
               <div
                 className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-300 hover:opacity-100"
