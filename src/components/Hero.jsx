@@ -9,6 +9,7 @@ const Hero = () => {
         autoPlay
         loop
         muted
+        preload="auto"  // Preload the video to prioritize it
       >
         <source src="./assets/video.mp4" type="video/mp4" />
       </video>
@@ -34,4 +35,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
