@@ -8,11 +8,10 @@ const About = () => {
         <div className="md:w-1/2">
           <h2 className="text-4xl font-bold text-gray-800 mb-6">About Us</h2>
           <p className="text-xl font-semibold text-gray-700 mb-4">
-            With over 20 years of experience, we are dedicated to providing
-            fast, reliable, and top-quality cleaning services at competitive
-            prices. Our team takes pride in delivering high-standard results
-            that meet the needs of our clients, whether for residential,
-            commercial, or specialized cleaning.
+            We are dedicated to providing fast, reliable, and top-quality
+            cleaning services at competitive prices. Our team takes pride in
+            delivering high-standard results that meet the needs of our clients,
+            whether for residential, commercial, or specialized cleaning.
           </p>
           <p className="text-lg font-semibold text-gray-700 mb-6">
             We combine expertise, efficiency, and attention to detail to ensure
