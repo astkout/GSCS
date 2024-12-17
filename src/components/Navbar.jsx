@@ -32,12 +32,12 @@ const Navbar = () => {
               Home
             </a>
             <a
-            href="#about"
-            className="text-white font-bold p-3 hover:text-gray-300"
-            onClick={closeMenu} // Close menu on click
-          >
-            About
-          </a>
+              href="#about"
+              className="text-white font-bold p-3 hover:text-gray-300"
+              onClick={closeMenu} // Close menu on click
+            >
+              About
+            </a>
             <a href="#ourwork" className="text-white font-bold p-3 hover:text-gray-300">
               Our Work
             </a>
@@ -49,8 +49,16 @@ const Navbar = () => {
               Contact
             </a>
           </div>
-          {/* Mobile Hamburger Button */}
-          <div className="lg:hidden flex items-center">
+          {/* Mobile Navbar */}
+          <div className="lg:hidden flex items-center justify-end w-full">
+              {/* Contact Button */}
+              <a
+              href="#contact"
+              className="bg-white text-blue-900 font-bold p-3 hover:bg-gray-200 rounded-full transition-colors"
+            >
+              Contact
+            </a>
+            {/* Hamburger Button */}
             <button onClick={toggleMenu} className="text-white p-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,13 +68,14 @@ const Navbar = () => {
                 className="w-6 h-6"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
             </button>
+          
           </div>
         </div>
       </div>
