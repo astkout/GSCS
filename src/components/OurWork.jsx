@@ -1,13 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const OurWork = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
-  // List of images for the slider
   const images = [
     "assets/image1.jpg",
     "assets/image2.jpg",
@@ -18,244 +14,133 @@ const OurWork = () => {
     "assets/image7.jpg",
   ];
 
-  // Function to change the current image
   const nextImage = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   }, [images.length]);
 
-  const prevImage = useCallback(() => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
-  }, [images.length]);
-
-  // Swipe handlers for mobile
-  const handleTouchStart = (e) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = (e) => {
-    setTouchEnd(e.changedTouches[0].clientX);
-    if (touchStart - touchEnd > 150) {
-      nextImage(); // Swipe left
-    }
-    if (touchStart - touchEnd < -150) {
-      prevImage(); // Swipe right
-    }
-  };
-
-  // Check if the device is mobile
   useEffect(() => {
     const checkIsMobile = () => {
-      setIsMobile(window.innerWidth <= 768); // Assuming mobile is 768px or below
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    checkIsMobile(); // Check on initial load
-
-    // Listen for window resizing
+    checkIsMobile();
     window.addEventListener("resize", checkIsMobile);
     return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
-  // Auto slideshow every 3 seconds on mobile
   useEffect(() => {
-    let intervalId;
-    if (isMobile) {
-      intervalId = setInterval(nextImage, 3000); // Change every 3 seconds on mobile
-    }
-    return () => {
-      if (intervalId) clearInterval(intervalId); // Cleanup interval on unmount or when isMobile changes
-    };
+    const interval = setInterval(nextImage, isMobile ? 3000 : 4000);
+    return () => clearInterval(interval);
   }, [isMobile, nextImage]);
 
-  // Auto slideshow every 4 seconds on desktop
   useEffect(() => {
-    let intervalId;
-    if (!isMobile) {
-      intervalId = setInterval(nextImage, 4000); // Change every 4 seconds on desktop
-    }
-    return () => {
-      if (intervalId) clearInterval(intervalId); // Cleanup interval on unmount or when isMobile changes
-    };
-  }, [isMobile, nextImage]);
+    images.forEach((image) => {
+      const img = new Image();
+      img.src = image;
+    });
+  }, [images]);
 
   return (
-    <section id="ourwork" className="py-20 sm:py-40 px-10 md:px-20 bg-gray-100">
-      <div className="text-center mb-12 flex flex-col items-center justify-center">
-        <h2 className="text-3xl md:text-5xl font-bold">Our Work</h2>
-        <p className="mt-7 px-10 text-xl md:text-2xl font-semibold">
-          With over 20 years of expertise in the cleaning industry, we deliver
-          unparalleled service and immaculate results. Our commitment to
-          excellence ensures your space is meticulously cleaned, creating an
-          environment that radiates freshness and professionalism.
-        </p>
+    <section
+      id="ourwork"
+      className="relative min-h-screen py-20 px-4 md:px-20 bg-gray-100 overflow-hidden"
+    >
+      {/* Background Images */}
+      <div className="absolute inset-0">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
+            style={{
+              backgroundImage: `url(${image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          ></div>
+        ))}
       </div>
 
-      <div className="py-16 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
-            {/* Services */}
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
+
+      {/* Content */}
+      <div className="relative z-10 text-white text-center">
+        {/* Header */}
+        <div className="mb-12">
+          <h2 className="text-4xl md:text-6xl font-bold">Our Work</h2>
+          <p className="mt-6 text-lg md:text-2xl font-semibold max-w-4xl mx-auto">
+            With over 20 years of expertise in the cleaning industry, we deliver
+            unparalleled service and immaculate results.
+          </p>
+        </div>
+
+        {/* Service Cards */}
+        <div className="max-w-7xl mx-auto py-24 px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {/* Residential Cleaning */}
-            <div className="relative bg-white p-8 rounded-lg shadow-xl text-center overflow-hidden transform transition-transform duration-300 hover:scale-105">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                Residential Cleaning
-              </h3>
-              <ul className="text-gray-600 space-y-3 text-lg font-semibold">
+            <div className="relative bg-gray-100 p-16 rounded-lg shadow-lg text-center overflow-hidden hover:scale-105 transition transform duration-300">
+              <img
+                src="assets/house.png" 
+                alt="Residential Icon"
+                className="w-16 h-16 mx-auto mb-4"
+              />
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Residential</h3>
+              <ul className="text-gray-600 space-y-2 font-semibold">
                 <li>Regular house cleaning</li>
                 <li>Deep cleaning</li>
               </ul>
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-300 hover:opacity-100"
-                style={{ backgroundImage: "url(./assets/residential.jpg)" }}
-              ></div>
+              <div className="absolute inset-0 bg-cover bg-center opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </div>
 
             {/* Commercial Cleaning */}
-            <div className="relative bg-white p-8 rounded-lg shadow-xl text-center overflow-hidden transform transition-transform duration-300 hover:scale-105">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                Commercial Cleaning
-              </h3>
-              <ul className="text-gray-600 space-y-3 text-lg font-semibold">
+            <div className="relative bg-gray-100 p-16 rounded-lg shadow-lg text-center overflow-hidden hover:scale-105 transition transform duration-300">
+              <img
+                src="assets/office.png" 
+                alt="Commercial Icon"
+                className="w-16 h-16 mx-auto mb-4"
+              />
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Commercial</h3>
+              <ul className="text-gray-600 space-y-2 font-semibold">
                 <li>Office spaces</li>
                 <li>Retail stores</li>
               </ul>
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-300 hover:opacity-100"
-                style={{ backgroundImage: "url(./assets/commercial.jpg)" }}
-              ></div>
+              <div className="absolute inset-0 bg-cover bg-center opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </div>
 
-            {/* Airbnb & Short-Term Rentals */}
-            <div className="relative bg-white p-8 rounded-lg shadow-xl text-center overflow-hidden transform transition-transform duration-300 hover:scale-105">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                Airbnb & Short-Term Rentals
-              </h3>
-              <ul className="text-gray-600 space-y-3 text-lg font-semibold">
+            {/* Airbnb Cleaning */}
+            <div className="relative bg-gray-100 p-16 rounded-lg shadow-lg text-center overflow-hidden hover:scale-105 transition transform duration-300">
+              <img
+                src="assets/airbnb.png"
+                alt="Airbnb Icon"
+                className="w-16 h-16 mx-auto mb-4"
+              />
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Airbnb</h3>
+              <ul className="text-gray-600 space-y-2 font-semibold">
                 <li>Turnover cleaning</li>
-                <li>Laundry and restocking services</li>
+                <li>Laundry & restocking</li>
               </ul>
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-300 hover:opacity-100"
-                style={{ backgroundImage: "url(./assets/airbnb.jpg)" }}
-              ></div>
+              <div className="absolute inset-0 bg-cover bg-center opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </div>
 
             {/* Specialized Cleaning */}
-            <div className="relative bg-white p-8 rounded-lg shadow-xl text-center overflow-hidden transform transition-transform duration-300 hover:scale-105">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                Specialized Cleaning
-              </h3>
-              <ul className="text-gray-600 space-y-3 text-lg font-semibold">
+            <div className="relative bg-gray-100 p-16 rounded-lg shadow-lg text-center overflow-hidden hover:scale-105 transition transform duration-300">
+              <img
+                src="assets/appliance.png"
+                alt="Specialized Icon"
+                className="w-16 h-16 mx-auto mb-4"
+              />
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Specialized</h3>
+              <ul className="text-gray-600 space-y-2 font-semibold">
                 <li>Fridges</li>
                 <li>Ovens</li>
-
               </ul>
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-300 hover:opacity-100"
-                style={{ backgroundImage: "url(./assets/carpet.jpg)" }}
-              ></div>
+              <div className="absolute inset-0 bg-cover bg-center opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Slider */}
-      <div
-        className="relative py-10 md:py-20 mx-auto max-w-4xl"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        {/* Carousel Wrapper */}
-        <div className="overflow-hidden rounded-lg">
-          <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {/* Images */}
-            {images.map((image, index) => (
-              <div key={index} className="flex-none w-full">
-                <img
-                  src={image}
-                  alt={`Slide ${index}`}
-                  className="w-full h-[400px] sm:h-[400px] md:h-[500px] object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Controls */}
-        {!isMobile && (
-          <div className="absolute inset-y-0 left-0 flex items-center justify-center px-4">
-            {/* Previous button */}
-            <button
-              onClick={prevImage}
-              className="bg-transparent text-blue-500 p-4 rounded-full hover:bg-blue-500 hover:text-white transition duration-300"
-              style={{
-                position: "absolute",
-                left: "-70px", // Position outside to the left of the carousel
-              }}
-            >
-              <FaChevronLeft size={30} />
-            </button>
-          </div>
-        )}
-        {!isMobile && (
-          <div className="absolute inset-y-0 right-0 flex items-center justify-center px-4">
-            {/* Next button */}
-            <button
-              onClick={nextImage}
-              className="bg-transparent text-blue-500 p-4 rounded-full hover:bg-blue-400 hover:text-white transition duration-300"
-              style={{
-                position: "absolute",
-                right: "-70px", // Position outside to the right of the carousel
-              }}
-            >
-              <FaChevronRight size={30} />
-            </button>
-          </div>
-        )}
-      </div>
-
-{/* Info Cards */}
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12">
-  <div className="bg-white p-6 rounded-lg shadow-md text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-    <img
-      src="assets/fast.png"
-      alt="Fast"
-      className="w-16 h-16 mx-auto mb-4"
-    />
-    <h3 className="text-lg sm:text-xl font-bold">Fast</h3>
-    <p className="mt-2 text-sm sm:text-base">
-      We deliver prompt, efficient cleaning services, ensuring your space is spotless in no time.
-    </p>
-  </div>
-
-  <div className="bg-white p-6 rounded-lg shadow-md text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-    <img
-      src="assets/reliable.png"
-      alt="Reliable"
-      className="w-16 h-16 mx-auto mb-4"
-    />
-    <h3 className="text-lg sm:text-xl font-bold">Reliable</h3>
-    <p className="mt-2 text-sm sm:text-base">
-      We provide reliable and consistent services, ensuring your needs are met with the highest level of professionalism and dependability.
-    </p>
-  </div>
-
-  <div className="bg-white p-6 rounded-lg shadow-md text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-    <img
-      src="assets/affordable.png"
-      alt="Affordable"
-      className="w-16 h-16 mx-auto mb-4"
-    />
-    <h3 className="text-lg sm:text-xl font-bold">Affordable</h3>
-    <p className="mt-2 text-sm sm:text-base">
-      We deliver cost-effective solutions, offering exceptional value through highly competitive pricing designed to meet your needs without compromising on quality.
-    </p>
-  </div>
-</div>
-
     </section>
   );
 };

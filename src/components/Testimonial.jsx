@@ -105,9 +105,45 @@ const Testimonial = () => {
   );
 
   return (
-    <section className="bg-blue-200 py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
+    <section className="bg-gray-100 py-24">
+
+        {/* Highlights */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 mx-8 mb-24">
+
+          <div className="bg-white p-6 rounded-lg shadow-md text-center text-black hover:scale-105 transition duration-300">
+            <img
+              src="assets/fast.png"
+              alt="Fast"
+              className="w-16 h-16 mx-auto mb-4"
+            />
+            <h3 className="text-xl font-bold">Fast</h3>
+            <p>Quick and efficient cleaning services.</p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-md text-center text-black hover:scale-105 transition duration-300">
+            <img
+              src="assets/reliable.png"
+              alt="Reliable"
+              className="w-16 h-16 mx-auto mb-4"
+            />
+            <h3 className="text-xl font-bold">Reliable</h3>
+            <p>Consistent, high-quality results.</p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-md text-center text-black hover:scale-105 transition duration-300">
+            <img
+              src="assets/affordable.png"
+              alt="Affordable"
+              className="w-16 h-16 mx-auto mb-4"
+            />
+            <h3 className="text-xl font-bold">Affordable</h3>
+            <p>Exceptional value for your money.</p>
+          </div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-6 mt-32">
+
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
           What Our Clients Say
         </h2>
         <div className="relative" {...handlers}>
@@ -145,6 +181,9 @@ const Testimonial = () => {
           </div>
         </div>
       </div>
+
+
+
     </section>
   );
 };

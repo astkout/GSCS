@@ -2,12 +2,12 @@ import React from "react";
 
 const About = () => {
   return (
-    <section className="bg-blue-200 py-16" id="about">
+    <section className="bg-gray-100 py-24" id="about">
       <div className="max-w-7xl mx-auto my-20 px-6 flex flex-col md:flex-row items-center">
         {/* Text Section */}
         <div className="md:w-1/2">
           <h2 className="text-4xl font-bold text-gray-800 mb-6">About Us</h2>
-          <p className="text-lg font-semibold text-gray-700 mb-4">
+          <p className="text-xl font-semibold text-gray-700 mb-4">
             With over 20 years of experience, we are dedicated to providing
             fast, reliable, and top-quality cleaning services at competitive
             prices. Our team takes pride in delivering high-standard results
@@ -30,14 +30,13 @@ const About = () => {
         </div>
 
         {/* Image Section */}
-        <div className="md:w-1/2 p-5 mt-8 md:mt-0">
-  <img
-    src="/assets/about2.png"
-    alt="About Us"
-    className="w-full max-w-sm md:max-w-full h-auto rounded-full mx-auto transform transition-transform duration-300 ease-in-out md:hover:scale-110"
-  />
-</div>
-
+        <div className="md:w-1/2 p-6 mt-12 md:mt-0">
+          <img
+            src="/assets/about2.png"
+            alt="About Us"
+            className="w-full max-w-sm md:max-w-full h-auto rounded-full mx-auto image-tilt-animation"
+          />
+        </div>
       </div>
     </section>
   );
