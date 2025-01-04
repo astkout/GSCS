@@ -28,16 +28,24 @@ const ContactUs = () => {
         console.log("Message sent to admin:", response.status, response.text);
 
         // Send an auto-reply to the user
-        emailjs.send(serviceID, templateIDReply, templateParams, publicKey).then(
-          (replyResponse) => {
-            console.log("Auto-reply sent to user:", replyResponse.status, replyResponse.text);
-            alert("Thank you for contacting us!");
-          },
-          (replyError) => {
-            console.error("Auto-reply failed:", replyError);
-            alert("Failed to send auto-reply.");
-          }
-        );
+        emailjs
+          .send(serviceID, templateIDReply, templateParams, publicKey)
+          .then(
+            (replyResponse) => {
+              console.log(
+                "Auto-reply sent to user:",
+                replyResponse.status,
+                replyResponse.text
+              );
+              alert(
+                "Thanks for reaching out! If you don't see our reply in your inbox, please check your junk or spam folder."
+              );
+            },
+            (replyError) => {
+              console.error("Auto-reply failed:", replyError);
+              alert("Failed to send auto-reply.");
+            }
+          );
       },
       (error) => {
         console.error("Message sending failed:", error);
@@ -60,7 +68,9 @@ const ContactUs = () => {
             <h2 className="text-3xl font-semibold">Contact Details</h2>
             <div>
               <p className="text-lg font-medium text-gray-700">Email:</p>
-              <p className="text-gray-600 font-semibold">info@gogcleaning.co.uk</p>
+              <p className="text-gray-600 font-semibold">
+                info@gogcleaning.co.uk
+              </p>
             </div>
             <div>
               <p className="text-lg font-medium text-gray-700">Phone:</p>
@@ -68,19 +78,19 @@ const ContactUs = () => {
               <p className="text-gray-600 font-semibold">+44 754 734 9061</p>
             </div>
             <div>
-            <p className="text-lg font-medium text-gray-700">Follow Us:</p>
-               <a
-        href="https://www.tiktok.com/@geecleaning?lang=en"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-white mt-4"
-      >
-        <img
-          src="./assets/tik-tok.png"
-          alt="TikTok"
-          className="w-6 h-6 mt-2 inline-block"
-        />
-      </a>
+              <p className="text-lg font-medium text-gray-700">Follow Us:</p>
+              <a
+                href="https://www.tiktok.com/@geecleaning?lang=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white mt-4"
+              >
+                <img
+                  src="./assets/tik-tok.png"
+                  alt="TikTok"
+                  className="w-6 h-6 mt-2 inline-block"
+                />
+              </a>
             </div>
             {/* Map */}
             <div className="mt-8">
