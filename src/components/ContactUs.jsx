@@ -5,9 +5,12 @@ const ContactUs = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [isMessageSent, setIsMessageSent] = useState(false); // Added a flag to prevent multiple sends
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (isMessageSent) return; // Prevent duplicate message sending
 
     // Retrieve the environment variables
     const serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
@@ -27,7 +30,7 @@ const ContactUs = () => {
       (response) => {
         console.log("Message sent to admin:", response.status, response.text);
 
-        // Send an auto-reply to the user
+        // After the admin message is sent, send an auto-reply
         emailjs
           .send(serviceID, templateIDReply, templateParams, publicKey)
           .then(
@@ -40,6 +43,7 @@ const ContactUs = () => {
               alert(
                 "Thanks for reaching out! If you don't see our reply in your inbox, please check your junk or spam folder."
               );
+              setIsMessageSent(true); // Set flag to true after the messages are sent
             },
             (replyError) => {
               console.error("Auto-reply failed:", replyError);
@@ -80,7 +84,7 @@ const ContactUs = () => {
             <div>
               <p className="text-lg font-medium text-gray-700">Follow Us:</p>
               <a
-                href="https://www.tiktok.com/@geecleaning?lang=en"
+                href="https://www.tiktok.com/@geecleaning"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white mt-4"
