@@ -88,8 +88,8 @@ const Services = () => {
               />
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Residential</h3>
               <ul className="text-gray-600 space-y-2 font-semibold">
-                <li>Regular house cleaning</li>
-                <li>Deep cleaning</li>
+                <li>Regular House Cleaning</li>
+                <li>Deep Cleaning</li>
               </ul>
               <div className="absolute inset-0 bg-cover bg-center opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </div>
@@ -103,8 +103,8 @@ const Services = () => {
               />
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Commercial</h3>
               <ul className="text-gray-600 space-y-2 font-semibold">
-                <li>Office spaces</li>
-                <li>Retail stores</li>
+                <li>Office Spaces</li>
+                <li>Retail Stores</li>
               </ul>
               <div className="absolute inset-0 bg-cover bg-center opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </div>
@@ -118,7 +118,7 @@ const Services = () => {
               />
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Airbnb</h3>
               <ul className="text-gray-600 space-y-2 font-semibold">
-                <li>Regular cleaning</li>
+                <li>Regular Cleaning</li>
                 <li>Deep Cleaning</li>
               </ul>
               <div className="absolute inset-0 bg-cover bg-center opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
