@@ -170,8 +170,9 @@ const ContactUs = () => {
                   required
                   placeholder="Enter your message"
                   className="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-                  rows={5}
+                  rows={6}
                   aria-multiline="true"
+                  style={{ resize: "none" }}
                 ></textarea>
               </div>
               <button
