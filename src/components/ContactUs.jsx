@@ -67,6 +67,21 @@ const ContactUs = () => {
               <p className="text-gray-600 font-semibold">+44 758 475 8669</p>
               <p className="text-gray-600 font-semibold">+44 754 734 9061</p>
             </div>
+            <div>
+            <p className="text-lg font-medium text-gray-700">Follow Us:</p>
+               <a
+        href="https://www.tiktok.com/@geecleaning?lang=en"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-white mt-4"
+      >
+        <img
+          src="./assets/tik-tok.png"
+          alt="TikTok"
+          className="w-6 h-6 mt-2 inline-block"
+        />
+      </a>
+            </div>
             {/* Map */}
             <div className="mt-8">
               <h3 className="text-xl mb-4 font-semibold text-gray-700">
