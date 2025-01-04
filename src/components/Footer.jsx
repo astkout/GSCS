@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-customPurple text-white py-8 flex justify-between items-center px-8">
-      <p className="text-center w-full">&copy; {currentYear} GS Cleaning Services. All Rights Reserved.</p>
+      <p className="text-center w-full">&copy; {currentYear} GO G Cleaning Services. All Rights Reserved.</p>
     </footer>
   );
 };
