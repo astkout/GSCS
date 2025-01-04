@@ -21,7 +21,7 @@ const About = () => {
           <div className="mt-12">
             <a
               href="#contact"
-              className="bg-customPurple text-white px-6 py-3 rounded-full text-xl hover:bg-customPink transition duration-300"
+              className="bg-customPurple text-white px-6 py-3 rounded-full text-xl hover:bg-pink-500 transition duration-300"
             >
               Contact Us
             </a>
