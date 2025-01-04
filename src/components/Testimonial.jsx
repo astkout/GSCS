@@ -105,7 +105,7 @@ const Testimonial = () => {
   );
 
   return (
-    <section className="bg-gray-100 py-24">
+    <section className="bg-customPink py-24">
 
         {/* Highlights */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 mx-8 mb-24">

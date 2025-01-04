@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <section className="bg-gray-100 py-24" id="about">
+    <section className="bg-customPink py-24" id="about">
       <div className="max-w-7xl mx-auto my-20 px-6 flex flex-col md:flex-row items-center">
         {/* Text Section */}
         <div className="md:w-1/2">
@@ -21,7 +21,7 @@ const About = () => {
           <div className="mt-12">
             <a
               href="#contact"
-              className="bg-blue-600 text-white px-6 py-3 rounded-full text-xl hover:bg-blue-700 transition duration-300"
+              className="bg-customPurple text-white px-6 py-3 rounded-full text-xl hover:bg-customPink transition duration-300"
             >
               Contact Us
             </a>
@@ -31,7 +31,7 @@ const About = () => {
         {/* Image Section */}
         <div className="md:w-1/2 p-6 mt-12 md:mt-0">
           <img
-            src="/assets/about2.png"
+            src="/assets/clean2.jpg"
             alt="About Us"
             className="w-full max-w-sm md:max-w-full h-auto rounded-full mx-auto image-tilt-animation"
           />

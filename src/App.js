@@ -2,7 +2,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import OurWork from "./components/OurWork";
+import Services from "./components/Services";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
 import Testimonial from "./components/Testimonial";
@@ -14,7 +14,7 @@ function App() {
       <Navbar />
       <Hero />
       <About />
-      <OurWork />
+      <Services />
       <Testimonial />
       <ContactUs />
       <Footer />
