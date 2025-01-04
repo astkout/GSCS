@@ -38,7 +38,7 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full bg-black bg-opacity-50 text-white text-center px-4">
-        <h2 className="text-7xl font-extrabold">GO GCleaning Services</h2>
+        <h2 className="text-7xl font-extrabold">GO G Cleaning Services</h2>
         <p className="mt-4 text-4xl">
           Fast. Reliable. Affordable.
         </p>
