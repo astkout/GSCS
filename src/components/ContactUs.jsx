@@ -84,7 +84,7 @@ const ContactUs = () => {
             <div>
               <p className="text-lg font-medium text-gray-700">Follow Us:</p>
               <a
-                href="https://www.tiktok.com/@geecleaning"
+                href="https://www.tiktok.com/@gogcleaning17"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white mt-4"
