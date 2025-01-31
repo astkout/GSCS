@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSwipeable } from 'react-swipeable'; // Import the react-swipeable package
+import { useSwipeable } from 'react-swipeable';
 
 const testimonials = [
   {
@@ -21,7 +21,7 @@ const testimonials = [
 
 const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const testimonialCount = testimonials.length;
 
   // Move to the next testimonial
@@ -31,159 +31,95 @@ const Testimonial = () => {
 
   // Move to the previous testimonial
   const prevTestimonial = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + testimonialCount) % testimonialCount
-    );
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonialCount) % testimonialCount);
   };
 
-  // Set up the auto-slide using a timer
+  // Set up auto-slide and responsive behavior
   useEffect(() => {
-    const timer = setInterval(nextTestimonial, 5000); // Change every 5 seconds
+    const timer = setInterval(nextTestimonial, 5000);
 
-    // Check if the window width is below 768px to set the isMobile state
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    };
-
-    // Add resize event listener
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener('resize', handleResize);
-    handleResize(); // Set initial state based on the current window width
 
-    // Clean up the timer and event listener when the component is unmounted
     return () => {
       clearInterval(timer);
       window.removeEventListener('resize', handleResize);
     };
   }, []);
 
-  // Set up swipe functionality using react-swipeable
+  // Swipe handlers
   const handlers = useSwipeable({
-    onSwipedLeft: nextTestimonial,  // Swipe left to go to the next testimonial
-    onSwipedRight: prevTestimonial, // Swipe right to go to the previous testimonial
-    preventDefaultTouchmoveEvent: true,  // Prevent default scroll behavior when swiping
+    onSwipedLeft: nextTestimonial,
+    onSwipedRight: prevTestimonial,
+    preventDefaultTouchmoveEvent: true,
   });
 
   // Custom SVG arrow icons
   const LeftArrow = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      width="24"
-      height="24"
-      className="text-gray-800"
-    >
-      <path
-        fill="none"
-        d="M0 0h24v24H0z"
-      />
-      <path
-        d="M14 7l-5 5 5 5V7z"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+      <path fill="none" d="M0 0h24v24H0z" />
+      <path d="M14 7l-5 5 5 5V7z" fill="currentColor" />
     </svg>
   );
 
   const RightArrow = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      width="24"
-      height="24"
-      className="text-gray-800"
-    >
-      <path
-        fill="none"
-        d="M0 0h24v24H0z"
-      />
-      <path
-        d="M10 7l5 5-5 5V7z"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+      <path fill="none" d="M0 0h24v24H0z" />
+      <path d="M10 7l5 5-5 5V7z" fill="currentColor" />
     </svg>
   );
 
   return (
     <section className="bg-customPink py-24">
-
-        {/* Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 mx-8 mb-24">
-
-          <div className="bg-white p-6 rounded-lg shadow-md text-center text-black hover:scale-105 transition duration-300">
-            <img
-              src="assets/fast.png"
-              alt="Fast"
-              className="w-16 h-16 mx-auto mb-4"
-            />
-            <h3 className="text-xl font-bold">Fast</h3>
-            <p>Quick and efficient cleaning services.</p>
+      {/* Highlights */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 mx-8 mb-24">
+        {[
+          { img: 'assets/fast.png', title: 'Fast', text: 'Quick and efficient cleaning services.' },
+          { img: 'assets/reliable.png', title: 'Reliable', text: 'Consistent, high-quality results.' },
+          { img: 'assets/affordable.png', title: 'Affordable', text: 'Exceptional value for your money.' },
+        ].map((highlight, index) => (
+          <div
+            key={index}
+            className="bg-white p-6 rounded-lg shadow-md text-center text-black hover:scale-105 transition duration-300"
+          >
+            <img src={highlight.img} alt={highlight.title} className="w-16 h-16 mx-auto mb-4" />
+            <h3 className="text-xl font-bold">{highlight.title}</h3>
+            <p>{highlight.text}</p>
           </div>
+        ))}
+      </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-md text-center text-black hover:scale-105 transition duration-300">
-            <img
-              src="assets/reliable.png"
-              alt="Reliable"
-              className="w-16 h-16 mx-auto mb-4"
-            />
-            <h3 className="text-xl font-bold">Reliable</h3>
-            <p>Consistent, high-quality results.</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-lg shadow-md text-center text-black hover:scale-105 transition duration-300">
-            <img
-              src="assets/affordable.png"
-              alt="Affordable"
-              className="w-16 h-16 mx-auto mb-4"
-            />
-            <h3 className="text-xl font-bold">Affordable</h3>
-            <p>Exceptional value for your money.</p>
-          </div>
-        </div>
-
-        <div className="max-w-4xl mx-auto px-6 mt-32">
-
+      {/* Testimonials */}
+      <div className="max-w-4xl mx-auto px-6 mt-32">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
           What Our Clients Say
         </h2>
         <div className="relative" {...handlers}>
-          <div className="bg-white p-6 rounded-lg shadow-lg mb-8">
-            <h3 className="text-xl font-semibold text-gray-800 text-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg mb-8 text-center">
+            <h3 className="text-xl font-semibold text-gray-800">
               {testimonials[currentIndex].name}
             </h3>
-            <p className="text-sm text-gray-500 text-center">
-              {testimonials[currentIndex].role}
-            </p>
-            <p className="mt-4 text-gray-700 text-center">
-              {testimonials[currentIndex].message}
-            </p>
+            <p className="text-sm text-gray-500">{testimonials[currentIndex].role}</p>
+            <p className="mt-4 text-gray-700">{testimonials[currentIndex].message}</p>
           </div>
-          <div className="absolute inset-0 flex justify-between items-center px-4">
-            {/* Only render arrows if not mobile */}
-            {!isMobile && (
-              <>
-                {/* Previous button with custom SVG icon */}
-                <button
-                  onClick={prevTestimonial}
-                  className="bg-white text-gray-800 p-4 rounded-full hover:bg-gray-200 transition duration-300"
-                >
-                  <LeftArrow /> {/* Custom Left Arrow */}
-                </button>
-                {/* Next button with custom SVG icon */}
-                <button
-                  onClick={nextTestimonial}
-                  className="bg-white text-gray-800 p-4 rounded-full hover:bg-gray-200 transition duration-300"
-                >
-                  <RightArrow /> {/* Custom Right Arrow */}
-                </button>
-              </>
-            )}
-          </div>
+          {!isMobile && (
+            <div className="absolute inset-0 flex justify-between items-center px-4">
+              <button
+                onClick={prevTestimonial}
+                className="bg-white p-4 rounded-full shadow hover:bg-gray-200 transition duration-300"
+              >
+                <LeftArrow />
+              </button>
+              <button
+                onClick={nextTestimonial}
+                className="bg-white p-4 rounded-full shadow hover:bg-gray-200 transition duration-300"
+              >
+                <RightArrow />
+              </button>
+            </div>
+          )}
         </div>
       </div>
-
-
-
     </section>
   );
 };
