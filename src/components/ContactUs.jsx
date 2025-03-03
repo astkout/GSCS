@@ -285,7 +285,6 @@ const ContactUs = () => {
                 >
                   
                   <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
-                  <img src="./assets/send.png" alt="Send" className="w-6 h-6 opacity-60" />
                 </button>
               </form>
             </div>
