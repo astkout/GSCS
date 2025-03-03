@@ -362,7 +362,7 @@ const Testimonials = () => {
 
   // Set up auto-slide and responsive behavior
   useEffect(() => {
-    const timer = setInterval(nextPage, 5000);
+    const timer = setInterval(nextPage, 7000);
 
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
@@ -375,8 +375,8 @@ const Testimonials = () => {
 
   // Swipe handlers
   const handlers = useSwipeable({
-    onSwipedLeft: nextPage, // Swipe left moves right
-    onSwipedRight: prevPage, // Swipe right moves left
+    onSwipedLeft: nextPage, 
+    onSwipedRight: prevPage, 
     preventDefaultTouchmoveEvent: true,
   });
 
