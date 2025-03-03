@@ -23,6 +23,8 @@
     "react-swipeable": "^7.0.2",
     "react-toastify": "^11.0.3",
     "stripe": "^17.6.0",
+    "three": "^0.174.0",
+    "three-orbitcontrols": "^2.110.3",
     "twilio": "^5.4.3"
   },
   "scripts": {
