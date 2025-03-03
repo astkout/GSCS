@@ -1,4 +1,3 @@
-// src/App.js
 import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -16,7 +15,7 @@ function App() {
       <Hero />
       <About />
       <Services />
-      {/* <BookingForm /> Coming Soon... */}
+      {/* <BookingForm />  Coming Soon... */}
       <Testimonial />
       <ContactUs />
       <Footer />

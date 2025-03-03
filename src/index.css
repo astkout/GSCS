@@ -15,3 +15,11 @@
     }
   }
   
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  }

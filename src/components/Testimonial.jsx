@@ -34,6 +34,11 @@ const Testimonial = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonialCount) % testimonialCount);
   };
 
+  // Jump to a specific testimonial
+  const goToTestimonial = (index) => {
+    setCurrentIndex(index);
+  };
+
   // Set up auto-slide and responsive behavior
   useEffect(() => {
     const timer = setInterval(nextTestimonial, 5000);
@@ -70,9 +75,9 @@ const Testimonial = () => {
   );
 
   return (
-    <section className="bg-customPink py-24">
+    <section className="bg-customPink py-20">
       {/* Highlights */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 mx-8 mb-24">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 mx-16 mb-24">
         {[
           { img: 'assets/fast.png', title: 'Fast', text: 'Quick and efficient cleaning services.' },
           { img: 'assets/reliable.png', title: 'Reliable', text: 'Consistent, high-quality results.' },
@@ -90,34 +95,47 @@ const Testimonial = () => {
       </div>
 
       {/* Testimonials */}
-      <div className="max-w-4xl mx-auto px-6 mt-32">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+      <div className="max-w-7xl mx-auto px-6 mt-32">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8 font-serif">
           What Our Clients Say
         </h2>
         <div className="relative" {...handlers}>
-          <div className="bg-white p-6 rounded-lg shadow-lg mb-8 text-center">
+          {/* Testimonial Card */}
+          <div className="bg-white p-6 rounded-lg shadow-lg mb-8 text-center mx-auto max-w-2xl min-h-[300px] flex flex-col justify-center">
             <h3 className="text-xl font-semibold text-gray-800">
               {testimonials[currentIndex].name}
             </h3>
             <p className="text-sm text-gray-500">{testimonials[currentIndex].role}</p>
-            <p className="mt-4 text-gray-700">{testimonials[currentIndex].message}</p>
+            <p className="mt-4 text-lg text-gray-700">{testimonials[currentIndex].message}</p>
           </div>
           {!isMobile && (
             <div className="absolute inset-0 flex justify-between items-center px-4">
-              <button
+              {/* <button
                 onClick={prevTestimonial}
-                className="bg-white p-4 rounded-full shadow hover:bg-gray-200 transition duration-300"
+                className="bg-white p-4 rounded-full shadow-lg hover:bg-gray-200 transition duration-300"
               >
                 <LeftArrow />
               </button>
               <button
                 onClick={nextTestimonial}
-                className="bg-white p-4 rounded-full shadow hover:bg-gray-200 transition duration-300"
+                className="bg-white p-4 rounded-full shadow-lg hover:bg-gray-200 transition duration-300"
               >
                 <RightArrow />
-              </button>
+              </button> */}
             </div>
           )}
+        </div>
+        {/* Navigation Dots */}
+        <div className="flex justify-center space-x-2 mt-6">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToTestimonial(index)}
+              className={`w-3 h-3 rounded-full ${
+                currentIndex === index ? 'bg-customPurple' : 'bg-white'
+              } transition-colors duration-300`}
+            />
+          ))}
         </div>
       </div>
     </section>
